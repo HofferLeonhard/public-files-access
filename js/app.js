@@ -48,6 +48,7 @@ var app = angular.module('app', []);
 
 
 			            if(!error){
+			            	/*
 			            	var url = "https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml";
 				            	url += "?";
 				            	url += "idbouton=2";
@@ -56,16 +57,11 @@ var app = angular.module('app', []);
 				            	url += "&_tel="+$this.telephone;
 								url += "&_clP="+$this.password;
 								url += "&_email="+$this.to;
+							*/
 
-				            $http({
-						        method : "GET",
-						        url : url
-						    }).then(function mySuccess(response) {
-						        alert(response.data);
-						        $this.success(response.data);
-						    }, function myError(response) {
-						        $this.error(response.statusText);
-						    });
+
+						    $("#formulaire-paiement").submit();
+
 			            }
 			            else{
 			            	$this.error("Veuillez remplir convenablement le formulaire");

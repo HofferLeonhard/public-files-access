@@ -217,18 +217,29 @@
 		</div>
 	</div>
 
-    <!-- <form id="formmomo" method="GET" action="https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml" target="_top">
+    <!-- <form id="formulaire-paiement" method="GET" action="https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml" target="_top">
 	<input type="" name="idbouton" value="2" autocomplete="off">
 	<input type="" name="typebouton" value="PAIE" autocomplete="off">
 	<input class="momo mount" type="" placeholder="" name="_amount" value="0" id="montant" autocomplete="off">
         <input class="momo host" type="" placeholder="" name="_tel" value="670868617" autocomplete="off">
         <input class="momo pwd" placeholder="Please enter your password" name="_clP" value="" autocomplete="off" type="">
 	<input type="" name="_email" value="gfam.monde@gmail.com" autocomplete="off">
-        <input type="image" id="Button_Image" src="https://developer.mtn.cm/OnlineMomoWeb/console/uses/itg_img/buttons/MOMO_buy_now_EN.jpg" style="width : 250px; height: 100px;" border="0" name="submit" alt="OnloneMomo, le réflexe sécurité pour payer en ligne" autocomplete="off">      
+        <input type="submit" id="Button_Image" src="https://developer.mtn.cm/OnlineMomoWeb/console/uses/itg_img/buttons/MOMO_buy_now_EN.jpg" style="width : 250px; height: 100px;" border="0" name="submit" alt="OnloneMomo, le réflexe sécurité pour payer en ligne" autocomplete="off">      
     </form>  -->
     
+    <form id="formulaire-paiement" method="GET" action="https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml">
+    	<input type="" name="idbouton" value="2" autocomplete="off">
+		<input type="" name="typebouton" value="PAIE" autocomplete="off">
+		<input class="momo mount" type="" placeholder="" name="_amount" ng-model="app.paiement.montant" id="montant" autocomplete="off">
+        <input class="momo host" type="" placeholder="" name="_tel" ng-model="app.paiement.telephone" autocomplete="off">
+        <input class="momo pwd" placeholder="Please enter your password" name="_clP" ng-model="app.paiement.password" autocomplete="off" type="">
+		<input type="" name="_email" ng-model="app.paiement.to" autocomplete="off">
+        
+    </form>
     <script type="text/javascript" src="jquery/jquery.min.js"></script>
     <script type="text/javascript" src="angular/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+
+    
 </body>
 </html>
