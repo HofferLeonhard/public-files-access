@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="controller">
+<head>
+	<title></title>
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<style type="text/css">
+		body{
+			--tbgColor:red;
+			--tcolor:#ffffff;
+		}
+		.paiement-global-container{
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.paiement-global-container .form-container{
+			display: block;
+			width: 90%;
+			height: auto;
+			margin:0 auto;
+		}
+
+		.ms-input{
+			display: block;
+			position: relative;
+			width:100%;
+			height: 40px;
+			border:solid 1px #C7CACC;
+			margin: 15px auto;
+			overflow: hidden;
+		}
+
+		.ms-input-buttons{
+			text-align: right;
+		}
+
+
+		.ms-input .input{
+		    display: block;
+		    position: absolute;
+		    width:calc(100% - 40px);
+		    height: 100%;
+		    top:0px;
+		    left:40px;
+		    z-index: 1;
+		    border:none;
+		    outline-width: 0px;
+		}
+
+		.ms-input .status{
+		    display: block;
+		    position: absolute;
+		    width:40px;
+		    height: 40px;
+		    line-height: 40px;
+		    top:0px;
+		    left:0px;
+		    z-index: 5;
+		    text-align: center;
+		}
+
+		.ms-input-buttons .status{
+			top:0px;
+			left: auto;
+		    right:80px;
+		    line-height: 40px;
+		}
+
+		.ms-input-buttons input{
+			width:80px;
+			height: 40px;
+			line-height: 40px;
+			background-color: var(--tbgColor);
+			color:var(--tcolor);
+			border: none;
+			font-size: 1.1em;
+		}
+
+		.ms-input-buttons input:hover{
+			cursor: pointer;
+			background-color: var(--tcolor);
+			color:var(--tbgColor);
+			border:solid 1px var(--tbgColor);
+		}
+
+		.ms-input .status .fa{
+		    display: none;
+		}
+		.ms-input .status .fa{
+		    color:var(--tbgColor);
+		}
+		.ms-input .status .fa.none{
+			display: inline-block;
+		}
+		.ms-input .status .fa.valid{
+			color:#A6E22B;
+		}
+		.ms-input .button{
+		    display: block;
+		    position: absolute;
+		    width:40px;
+		    height: 100%;
+		    line-height: 30px;
+		    top:0px;
+		    right:15px;
+		    z-index: 5;
+		    text-align: center;
+		    font-size: 0.8em;
+		    outline-width: 0px;
+		}
+		.ms-input .button{
+		    display: block;
+		    position: absolute;
+		    width:40px;
+		    height: 100%;
+		    line-height: 40px;
+		    top:0px;
+		    right:15px;
+		    z-index: 5;
+		    text-align: center;
+		    font-size: 0.8em;
+		    outline-width: 0px;
+		}
+
+		.paiement-global-container .paiement-selection{
+			display:block;
+			width:100%;
+			height: auto;
+			margin-bottom: 2%;
+			text-align: center;
+		}
+
+		.paiement-global-container .paiement-selection ul{
+			display:block;
+			width:auto;
+			height: auto;
+			margin:0 auto;
+			text-align: center;
+		}
+		.paiement-global-container .paiement-selection ul li{
+			display:inline-flex;
+			width:100px;
+			height: 100px;
+			margin:5px;
+			/*background-color: var(--tbgColor);*/
+			/*border:solid 1px var(--tbgColor);*/
+			background-position: center top;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.paiement-global-container .paiement-selection ul li:hover{
+			opacity: 0.8;
+			border-color: none;
+			cursor: pointer;
+		}
+
+		.error-container{
+			color:red;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="paiement-global-container">
+		<div class="paiement-selection">
+			<ul>
+				<li ng-repeat="paiement in app.paiementsMode" style="background-image: url({{paiement.icon}})"></li>
+			</ul>
+		</div>
+		<div class="form-container">
+			<div class="ms-input error-container" style="border:none;height: auto;"></div>
+			<div class="ms-input paiement-montant-input">
+				<div class="status">
+	            	<i class="fa check fa-hashtag none"></i>
+	            	<i class="fa check fa-spinner fa-spin fa-1x fa-fw loading"></i>
+	            	<i class="fa check fa-check valid"></i>
+	            	<i class="fa check fa-times bad"></i>
+	            </div>
+	            <input class="input" type="number" ng-model="app.paiement.montant" placeholder="montant à envoyer" autocomplete="off">
+            	<div class="button"></div>
+	        </div>
+
+			<div class="ms-input paiement-tel-input">
+				<div class="status">
+	            	<i class="fa check fa-hashtag none"></i>
+	            	<i class="fa check fa-spinner fa-spin fa-1x fa-fw loading"></i>
+	            	<i class="fa check fa-check valid"></i>
+	            	<i class="fa check fa-times bad"></i>
+	            </div>
+	            <input class="input" type="number" ng-model="app.paiement.telephone" placeholder="votre numéro de téléphone" autocomplete="off">
+            	<div class="button"></div>
+	        </div>
+
+	        <div class="ms-input paiement-password-input">
+				<div class="status">
+	            	<i class="fa check fa-hashtag none"></i>
+	            	<i class="fa check fa-spinner fa-spin fa-1x fa-fw loading"></i>
+	            	<i class="fa check fa-check valid"></i>
+	            	<i class="fa check fa-times bad"></i>
+	            </div>
+	            <input class="input" type="password" ng-model="app.paiement.password" placeholder="votre mot de passe" autocomplete="off">
+            	<div class="button"></div>
+	        </div>
+
+	        <div class="ms-input ms-input-buttons paiement-buttons-input" style="border:none;">
+				<div class="status">
+	            	<i class="fa check fa-hashtag none"></i>
+	            	<i class="fa check fa-spinner fa-spin fa-1x fa-fw loading"></i>
+	            	<i class="fa check fa-check valid"></i>
+	            	<i class="fa check fa-times bad"></i>
+	            </div>
+	            <input type="button" value="Payer" ng-click="app.paiement.pay()"/>
+	        </div>
+		</div>
+	</div>
+
+    <!-- <form id="formmomo" method="GET" action="https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml" target="_top">
+	<input type="" name="idbouton" value="2" autocomplete="off">
+	<input type="" name="typebouton" value="PAIE" autocomplete="off">
+	<input class="momo mount" type="" placeholder="" name="_amount" value="0" id="montant" autocomplete="off">
+        <input class="momo host" type="" placeholder="" name="_tel" value="670868617" autocomplete="off">
+        <input class="momo pwd" placeholder="Please enter your password" name="_clP" value="" autocomplete="off" type="">
+	<input type="" name="_email" value="gfam.monde@gmail.com" autocomplete="off">
+        <input type="image" id="Button_Image" src="https://developer.mtn.cm/OnlineMomoWeb/console/uses/itg_img/buttons/MOMO_buy_now_EN.jpg" style="width : 250px; height: 100px;" border="0" name="submit" alt="OnloneMomo, le réflexe sécurité pour payer en ligne" autocomplete="off">      
+    </form>  -->
+    
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
